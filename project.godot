@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "ReferenceRect",
+"class": "CGChart",
+"language": "GDScript",
+"path": "res://addons/ChartGraph/core/chart.gd"
+}, {
+"base": "CGChart",
+"class": "CGLine",
+"language": "GDScript",
+"path": "res://addons/ChartGraph/line_chart/line_chart.gd"
+}, {
+"base": "Node2D",
+"class": "DateTimeManager",
+"language": "GDScript",
+"path": "res://src/UI/DateTimeManager.gd"
+} ]
+_global_script_class_icons={
+"CGChart": "",
+"CGLine": "",
+"DateTimeManager": ""
+}
+
 [application]
 
 config/name="relativity"
