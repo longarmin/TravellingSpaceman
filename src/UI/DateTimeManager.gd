@@ -1,14 +1,43 @@
+# About: Date Time Manager
+# Handles time conversions, timers and timer events.
+#
 extends Node2D
+
 class_name DateTimeManager
+
+# Class: hhmmss
+#
+# Handles Time formats.
 class hhmmss:
 	var hh: int = 0
 	var mm: int = 0
 	var ss: int = 0
 	var _time: float = 0.0
 
+#	Function: _init
+#	 Stores parameters hours, minutes and seconds.
+#
+#	 Parameters:
+#
+#    hh - Hours
+#    mm - Minutes
+#	 ss - Seconds
+
 	func _init(time: float):
 		[hh, mm, ss] = calc_time(time)
 	
+
+#	Function: calc_time
+#	 Calculates hours, minutes and seconds from an absolute time formatted in seconds.
+#
+#	 Parameters: 
+#
+#    time - time in seconds
+#
+#	 Returns: 
+#    [hh, mm, ss] - array with variables hours, minutes, seconds (all integers) 
+#
+
 	func calc_time(time: float):
 		hh = int(time / 3600)
 		mm = int((int(time) % 3600) / 60)

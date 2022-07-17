@@ -1,3 +1,6 @@
+# About: Analogue Clock
+# Creates time for analogue clock and displays it on the screen.
+#
 extends DateTimeManager
 
 
@@ -12,16 +15,19 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if(flag_one_second_for_AnalogueClock):
-		updTime(flag_one_second_for_AnalogueClock)
-		flag_one_second_for_AnalogueClock = false
-		$HourHand.frame = AnalogueTime.hh
-		$MinuteHand.frame = AnalogueTime.mm
-		$SecondHand.frame = AnalogueTime.ss
+# func _process(delta: float) -> void:
+# 	if(flag_one_second_for_AnalogueClock):
+# 		updTime(flag_one_second_for_AnalogueClock)
+# 		flag_one_second_for_AnalogueClock = false
+# 		$HourHand.frame = AnalogueTime.hh
+# 		$MinuteHand.frame = AnalogueTime.mm
+# 		$SecondHand.frame = AnalogueTime.ss
 		
-		
-func updTime(delta_time: float):
-	AnalogueTime._time = WorldTime
+# Function: updTime(float)
+# Increments time, and updates the clock. Writes HH MM SS to scene.
+func updTime(time: float):
+	AnalogueTime._time = time
 	AnalogueTime.calc_time(AnalogueTime._time)
-	print(AnalogueTime._time)
+	$HourHand.frame = AnalogueTime.hh
+	$MinuteHand.frame = AnalogueTime.mm
+	$SecondHand.frame = AnalogueTime.ss
