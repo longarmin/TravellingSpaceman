@@ -1,0 +1,29 @@
+[gd_scene format=2]
+
+[node name="MarginContainer" type="MarginContainer"]
+margin_right = 160.0
+margin_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 160.0
+margin_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+margin_right = 160.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+margin_right = 160.0
+margin_bottom = 14.0
+text = "Land on Planet?"
+align = 1
+valign = 1
+
+[node name="Yes" type="Label" parent="Panel/VBoxContainer"]
+margin_top = 18.0
+margin_right = 160.0
+margin_bottom = 32.0
+text = "Press 'E'"
+align = 1
+valign = 1

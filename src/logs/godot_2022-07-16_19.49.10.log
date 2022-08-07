@@ -1,0 +1,23 @@
+Godot Engine v3.4.4.stable.official.419e713a2 - https://godotengine.org
+OpenGL ES 3.0 Renderer: Quadro K2000M/PCIe/SSE2
+OpenGL ES Batching: ON
+ 
+Project is missing: C:/Users/Armin/Documents/2_MiniGameJam/project.godot
+Project is missing: C:/Temp/2_MiniGameJam/project.godot
+Project is missing: C:/Temp/2_MiniGameJam/mini-gamejam-nov-2019/project.godot
+Project is missing: C:/temp/instancing/instancing/project.godot
+Project is missing: C:/Temp/your_first_game/Dodge the Creeps/project.godot
+Project is missing: F:/Programmierung/Godot/MakeYourFirst2DGame_GDQuest/project.godot
+Project is missing: C:/Temp/2_MiniGameJam/mini-gamejam-nov-2019 - Kopie/project.godot
+Project is missing: C:/temp/Cut Out Animation Tutorial/project.godot
+Project is missing: F:/Programmierung/Godot/kidscancode/rigidbody_drag_and_drop/project.godot
+Project is missing: C:/Temp/2_MiniGameJam/2020_05_09/project.godot
+Project is missing: C:/Temp/2_MiniGameJam/2020_05_09/GameJamDoMai20/project.godot
+Project is missing: C:/Temp/2_MiniGameJam/2021_04_01/GameJamDoMai20/project.godot
+Project is missing: C:/Temp/flappybirds/Flappy-Bird-in-Godot-3.x/project.godot
+Project is missing: C:/Temp/switching_doors_example/godot_portal_tutorial/project.godot
+Project is missing: C:/Temp/2d_navigation/navigation/project.godot
+Project is missing: C:/Temp/hijinx/hijinx/project.godot
+Project is missing: F:/1_GameDev/3_Relativity/project.godot
+ERROR: Condition "default_certs != nullptr" is true.
+   at: load_default_certificates (modules/mbedtls/crypto_mbedtls.cpp:314) - Condition "default_certs != nullptr" is true.

@@ -1,0 +1,1 @@
+﻿NDSummary.OnToolTipsLoaded("File:src/room_of_time.gd",{2:"<div class=\"NDToolTip TInformation LGDScript\"><div class=\"TTSummary\">Here the relativistic calculations are performed.</div></div>"});

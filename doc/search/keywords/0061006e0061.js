@@ -1,0 +1,1 @@
+﻿NDSearch.OnPrefixDataLoaded("ana",["Information"],[["Analogue",,[[,"Analogue Clock",,,0,"File:src/UI/AnalogueClock.gd:Analogue_Clock"]]]]);

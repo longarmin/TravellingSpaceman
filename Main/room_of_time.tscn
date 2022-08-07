@@ -1,14 +1,16 @@
-[gd_scene load_steps=268 format=2]
+[gd_scene load_steps=270 format=2]
 
-[ext_resource path="res://assets/rocket.png" type="Texture" id=1]
+[ext_resource path="res://Ships/Player/PlayerShip.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/room_of_time.gd" type="Script" id=2]
-[ext_resource path="res://addons/ChartGraph/assets/fonts/Roboto/RobotoRegular.tres" type="DynamicFont" id=3]
-[ext_resource path="res://addons/ChartGraph/line_chart/line_chart.gd" type="Script" id=4]
+[ext_resource path="res://World/Planets/Planet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://World/Spawner/SystemSpawner.gd" type="Script" id=4]
 [ext_resource path="res://assets/UI/lightspeed_graph.png" type="Texture" id=5]
-[ext_resource path="res://assets/scenes/UI_7Segment.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/scenes/AnalogueClock.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Main/UI_7Segment.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Main/AnalogueClock.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/UI/DateTimeManager.gd" type="Script" id=8]
 [ext_resource path="res://src/UI/AnalogueClock.gd" type="Script" id=9]
+[ext_resource path="res://UI/UI.gd" type="Script" id=10]
+[ext_resource path="res://UI/DockingDialogue.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Environment" id=1]
 
@@ -1306,19 +1308,48 @@ script = ExtResource( 2 )
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource( 1 )
 
-[node name="Spaceship" type="Sprite" parent="."]
-position = Vector2( 508.74, 294.908 )
-texture = ExtResource( 1 )
+[node name="PlayerShip" parent="." instance=ExtResource( 1 )]
+position = Vector2( 441.127, 360.31 )
+z_index = 1
 
-[node name="NRG_MONITOR" type="Label" parent="."]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 513.737, 299.68 )
+current = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 10 )
+
+[node name="DateTimeManager" type="Node2D" parent="UI"]
+position = Vector2( 692.119, 296.558 )
+script = ExtResource( 8 )
+
+[node name="UI_7Segment" parent="UI/DateTimeManager" instance=ExtResource( 6 )]
+position = Vector2( 0, 0 )
+
+[node name="AnalogueClock" parent="UI/DateTimeManager" instance=ExtResource( 7 )]
+position = Vector2( 125.279, 177.268 )
+script = ExtResource( 9 )
+
+[node name="HUD" type="Control" parent="UI"]
+margin_right = 1027.0
+margin_bottom = 599.0
+
+[node name="GridContainer" type="GridContainer" parent="UI/HUD"]
+margin_right = 1030.0
+margin_bottom = 602.0
+columns = 3
+
+[node name="Speedometer" type="AnimatedSprite" parent="UI/HUD/GridContainer"]
+position = Vector2( 811.04, 115.948 )
+scale = Vector2( 1.51099, 1.51099 )
+frames = SubResource( 258 )
+
+[node name="NRG_MONITOR" type="Label" parent="UI/HUD"]
 margin_right = 40.0
 margin_bottom = 14.0
 text = "BLA"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="SPD_MONITOR" type="Label" parent="."]
+[node name="SPD_MONITOR" type="Label" parent="UI/HUD"]
 margin_left = -0.374573
 margin_top = 11.9865
 margin_right = 39.6254
@@ -1328,7 +1359,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MASS_MONITOR" type="Label" parent="."]
+[node name="MASS_MONITOR" type="Label" parent="UI/HUD"]
 margin_left = -0.374573
 margin_top = 23.9865
 margin_right = 39.6254
@@ -1338,7 +1369,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TIME_MONITOR" type="Label" parent="."]
+[node name="TIME_MONITOR" type="Label" parent="UI/HUD"]
 margin_left = -0.374573
 margin_top = 37.9865
 margin_right = 39.6254
@@ -1348,7 +1379,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TIMEMOV_MONITOR" type="Label" parent="."]
+[node name="TIMEMOV_MONITOR" type="Label" parent="UI/HUD"]
 margin_left = -0.374573
 margin_top = 48.9865
 margin_right = 39.6254
@@ -1358,7 +1389,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DIST_MONITOR" type="Label" parent="."]
+[node name="DIST_MONITOR" type="Label" parent="UI/HUD"]
 margin_left = -0.374573
 margin_top = 61.9865
 margin_right = 39.6254
@@ -1368,32 +1399,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CGLine" type="ReferenceRect" parent="."]
-visible = false
-margin_left = 582.0
-margin_top = 30.0
-margin_right = 990.0
-margin_bottom = 252.0
+[node name="MarginContainer" parent="UI/HUD" instance=ExtResource( 11 )]
+margin_left = 347.058
+margin_top = 543.28
+margin_right = 507.058
+margin_bottom = 583.28
+size_flags_horizontal = 3
+
+[node name="SystemSpawner" type="Node2D" parent="."]
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-label_font = ExtResource( 3 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Speedometer" type="AnimatedSprite" parent="."]
-position = Vector2( 811.04, 115.948 )
-scale = Vector2( 1.51099, 1.51099 )
-frames = SubResource( 258 )
-
-[node name="DateTimeManager" type="Node2D" parent="."]
-position = Vector2( 692.119, 296.558 )
-script = ExtResource( 8 )
-
-[node name="UI_7Segment" parent="DateTimeManager" instance=ExtResource( 6 )]
-position = Vector2( 0, 0 )
-
-[node name="AnalogueClock" parent="DateTimeManager" instance=ExtResource( 7 )]
-position = Vector2( 125.279, 177.268 )
-script = ExtResource( 9 )
+Planet = ExtResource( 3 )
